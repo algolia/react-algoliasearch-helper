@@ -1,0 +1,38 @@
+{
+  "name": "algoliaseach-helper-provider",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "node server.js",
+    "lint": "eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+  ],
+  "author": "",
+  "license": "MIT",
+  "homepage": "",
+  "devDependencies": {
+    "babel-core": "*",
+    "babel-eslint": "*",
+    "babel-loader": "*",
+    "babel-preset-es2015": "*",
+    "babel-preset-react": "*",
+    "babel-preset-stage-0": "*",
+    "eslint": "*",
+    "eslint-plugin-react": "*",
+    "react-hot-loader": "*",
+    "webpack": "*",
+    "webpack-dev-server": "*"
+  },
+  "dependencies": {
+    "algoliasearch": "*",
+    "algoliasearch-helper": "*",
+    "lodash": "^4.13.1",
+    "react": "*",
+    "react-dom": "*"
+  }
+}
