@@ -34,7 +34,9 @@ export default class Provider extends Component {
 
   getChildContext(){
     const client = Algoliasearch(this.props.credentials.applicationID, this.props.credentials.key);
-    const helper = this.helper = bindAll(AlgoliaSearchHelper(client, this.props.config.index, {}));
+    const helper = this.helper = bindAll(AlgoliaSearchHelper(client, this.props.config.index, {
+      facets: this.props.config.facets, disjunctiveFacets: this.props.config.disjunctiveFacets
+    }));
 
     helper.on('result', (res) => {
       this.setState({lastSearchResults: res});
