@@ -1,5 +1,5 @@
 {
-  "name": "algoliaseach-helper-provider",
+  "name": "algoliasearch-helper-provider",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -10,12 +10,13 @@
     "type": "git",
     "url": ""
   },
-  "keywords": [
-  ],
+  "keywords": [],
   "author": "",
   "license": "MIT",
   "homepage": "",
   "devDependencies": {
+    "algoliasearch": "*",
+    "algoliasearch-helper": "*",
     "babel-core": "*",
     "babel-eslint": "*",
     "babel-loader": "*",
@@ -24,15 +25,17 @@
     "babel-preset-stage-0": "*",
     "eslint": "*",
     "eslint-plugin-react": "*",
+    "react": "*",
+    "react-addons-shallow-compare": "^15.2.0",
+    "react-dom": "*",
     "react-hot-loader": "*",
     "webpack": "*",
     "webpack-dev-server": "*"
   },
-  "dependencies": {
+  "peerDependencies": {
     "algoliasearch": "*",
     "algoliasearch-helper": "*",
-    "lodash": "^4.13.1",
     "react": "*",
-    "react-dom": "*"
+    "react-addons-shallow-compare": "^15.2.0"
   }
 }

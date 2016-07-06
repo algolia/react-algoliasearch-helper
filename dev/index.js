@@ -1,20 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-
+import algoliasearch from 'algoliasearch';
+import algoliasearchHelper from 'algoliasearch-helper';
 import Provider from '../src/Provider.js';
 
-const algoliaCredentials = {
-  applicationID: 'latency',
-  key: 'ffc36feb6e9df06e1c3c4549b5af2b31'
-};
+import App from './App';
 
-const helperConfig = {
-  index: 'starbucks'
-};
+const client = algoliasearch('latency', 'ffc36feb6e9df06e1c3c4549b5af2b31');
+const helper = algoliasearchHelper(client, 'starbucks');
 
 ReactDOM.render(
-  <Provider credentials={algoliaCredentials} config={helperConfig}>
+  <Provider helper={helper}>
     <App />
   </Provider>,
-  document.getElementById('root'));
+  document.getElementById('root')
+);
