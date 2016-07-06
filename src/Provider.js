@@ -1,54 +1,33 @@
-import React, {Component, PropTypes as T, Children} from 'react';
-import AlgoliaSearchHelper from 'algoliasearch-helper';
-import Algoliasearch from 'algoliasearch';
-import bindAll from 'lodash/bindAll';
+import React, { Component, PropTypes as T, Children } from 'react';
+import { AlgoliaSearchHelper } from 'algoliasearch-helper';
 
-export const contextType = {
-  helper: T.object.isRequired,
-  results: T.object
-};
+import createStore from './createStore';
+import storeShape from './storeShape';
 
-export default class Provider extends Component {
+class Provider extends Component {
   static propTypes = {
-    credentials: T.shape({
-      applicationID: T.string.isRequired,
-      key: T.string.isRequired
-    }),
-    config: T.shape({
-      index: T.string.isRequired,
-      facets: T.arrayOf(T.string),
-      disjunctiveFacets: T.arrayOf(T.string)
-    })
-  }
+    helper: T.instanceOf(AlgoliaSearchHelper),
+  };
 
-  static childContextTypes = contextType;
+  static childContextTypes = {
+    algoliaStore: storeShape.isRequired,
+  };
 
   constructor(props) {
     super(props);
-    this.state = { lastSearchResults: {} };
+
+    this.store = createStore(props.helper);
   }
 
-  componentDidMount() {
-    this.helper.search();
-  }
-
-  getChildContext(){
-    const client = Algoliasearch(this.props.credentials.applicationID, this.props.credentials.key);
-    const helper = this.helper = bindAll(AlgoliaSearchHelper(client, this.props.config.index, {
-      facets: this.props.config.facets, disjunctiveFacets: this.props.config.disjunctiveFacets
-    }));
-
-    helper.on('result', (res) => {
-      this.setState({lastSearchResults: res});
-    });
-
+  getChildContext() {
     return {
-      helper,
-      results: this.state.lastSearchResults
+      algoliaStore: this.store,
     };
   }
 
   render() {
     return Children.only(this.props.children);
   }
-};
+}
+
+export default Provider;

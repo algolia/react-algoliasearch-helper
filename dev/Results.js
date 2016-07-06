@@ -6,7 +6,9 @@ function Results(props) {
   const hits = (props.results.hits || []).map((hit) => {
     return <div key={hit.objectID}>{hit.Name}</div>;
   });
-  return <div>{hits}</div>; 
+  return <div>{hits}</div>;
 }
 
-export default connect(Results);
+export default connect(state => ({
+  results: state.searchResults,
+}))(Results);
