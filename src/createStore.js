@@ -51,7 +51,7 @@ export default function createStore(helper) {
     },
     subscribe: listener => {
       listeners.push(listener);
-      return () => {
+      return function unsubscribe() {
         listeners.splice(listeners.indexOf(listener));
       };
     },
