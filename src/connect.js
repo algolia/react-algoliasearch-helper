@@ -3,7 +3,10 @@ import shallowCompare from 'react-addons-shallow-compare';
 
 import storeShape from './storeShape';
 
-export default function connect(mapToProps, helperProp = 'helper') {
+export default function connect(
+  mapStateToProps,
+  { helperProp = 'helper', searchProp = 'search' } = {}
+) {
   return Composed => {
     return class Connected extends Component {
       static contextTypes = {
@@ -13,14 +16,22 @@ export default function connect(mapToProps, helperProp = 'helper') {
       constructor(props, context) {
         super();
 
-        if (mapToProps) {
-          this.state = mapToProps(context.algoliaStore.getState(), props);
+        if (mapStateToProps) {
+          this.state = mapStateToProps(context.algoliaStore.getState(), props);
 
           this.unsubscribe = context.algoliaStore.subscribe(() => {
             this.setState(
-              mapToProps(context.algoliaStore.getState(), this.props)
+              mapStateToProps(context.algoliaStore.getState(), this.props)
             );
           });
+        }
+      }
+
+      componentWillReceiveProps(nextProps) {
+        if (mapStateToProps) {
+          this.setState(
+            mapStateToProps(this.context.algoliaStore.getState(), nextProps)
+          );
         }
       }
 
@@ -39,7 +50,10 @@ export default function connect(mapToProps, helperProp = 'helper') {
           <Composed
             {...this.props}
             {...this.state}
-            {...{[helperProp]: this.context.algoliaStore.getHelper() }}
+            {...{
+              [helperProp]: this.context.algoliaStore.getHelper(),
+              [searchProp]: this.context.algoliaStore.debouncedSearch,
+            }}
           />
         );
       }
