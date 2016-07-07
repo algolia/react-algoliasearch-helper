@@ -10,12 +10,34 @@ export default function createStore(helper) {
     listeners.forEach(listener => listener());
   };
 
+  let dispatchQueued = false;
+  const debouncedDispatch = () => {
+    if (!dispatchQueued) {
+      dispatchQueued = true;
+      process.nextTick(() => {
+        dispatchQueued = false;
+        dispatch();
+      });
+    }
+  };
+
+  let searchQueued = false;
+  const debouncedSearch = () => {
+    if (!searchQueued) {
+      searchQueued = true;
+      process.nextTick(() => {
+        searchQueued = false;
+        helper.search();
+      });
+    }
+  };
+
   helper.on('change', searchParameters => {
     state = {
       ...state,
       searchParameters,
     };
-    dispatch();
+    debouncedDispatch();
   });
 
   helper.on('search', () => {
@@ -45,6 +67,7 @@ export default function createStore(helper) {
   });
 
   return {
+    debouncedSearch,
     getHelper: () => helper,
     getState: () => {
       return state;
