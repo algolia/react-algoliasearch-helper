@@ -27,6 +27,14 @@ export default function connect(
         }
       }
 
+      componentWillReceiveProps(nextProps) {
+        if (mapStateToProps) {
+          this.setState(
+            mapStateToProps(this.context.algoliaStore.getState(), nextProps)
+          );
+        }
+      }
+
       componentWillUnmount() {
         if (this.unsubscribe) {
           this.unsubscribe();
