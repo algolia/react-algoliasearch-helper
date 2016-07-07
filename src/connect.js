@@ -16,12 +16,12 @@ export default function connect(
       constructor(props, context) {
         super();
 
-        if (mapToProps) {
-          this.state = mapToProps(context.algoliaStore.getState(), props);
+        if (mapStateToProps) {
+          this.state = mapStateToProps(context.algoliaStore.getState(), props);
 
           this.unsubscribe = context.algoliaStore.subscribe(() => {
             this.setState(
-              mapToProps(context.algoliaStore.getState(), this.props)
+              mapStateToProps(context.algoliaStore.getState(), this.props)
             );
           });
         }
