@@ -1,16 +1,16 @@
-import React, { Component, PropTypes as T, Children } from 'react';
-import { AlgoliaSearchHelper } from 'algoliasearch-helper';
+import {Component, PropTypes, Children} from 'react';
 
-import createStore from './createStore';
-import storeShape from './storeShape';
+import createStore from './createStore.js';
+import storeShape from './storeShape.js';
 
 class Provider extends Component {
   static propTypes = {
-    helper: T.instanceOf(AlgoliaSearchHelper),
+    helper: PropTypes.object.isRequired,
+    children: PropTypes.node.isRequired
   };
 
   static childContextTypes = {
-    algoliaStore: storeShape.isRequired,
+    algoliaStore: storeShape.isRequired
   };
 
   constructor(props) {
@@ -21,7 +21,7 @@ class Provider extends Component {
 
   getChildContext() {
     return {
-      algoliaStore: this.store,
+      algoliaStore: this.store
     };
   }
 

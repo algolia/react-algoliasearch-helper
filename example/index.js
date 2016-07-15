@@ -2,16 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import algoliasearch from 'algoliasearch';
 import algoliasearchHelper from 'algoliasearch-helper';
-import Provider from '../src/Provider.js';
-
-import App from './App';
+import {Provider} from 'react-algoliasearch-helper';
+import SearchBox from './components/SearchBox.js';
+import Hits from './components/Hits.js';
 
 const client = algoliasearch('latency', 'ffc36feb6e9df06e1c3c4549b5af2b31');
 const helper = algoliasearchHelper(client, 'starbucks');
 
-ReactDOM.render(
+const App = () =>
   <Provider helper={helper}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-);
+    <div>
+      <SearchBox/>
+      <Hits/>
+    </div>
+  </Provider>;
+
+ReactDOM.render(<App/>, document.querySelector('#root'));

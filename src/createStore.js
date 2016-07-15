@@ -3,17 +3,15 @@ export default function createStore(helper) {
     searching: false,
     searchParameters: helper.getState(),
     searchResults: null,
-    searchError: null,
+    searchError: null
   };
   const listeners = [];
-  const dispatch = () => {
-    listeners.forEach(listener => listener());
-  };
+  const dispatch = () => { listeners.forEach(listener => listener()); };
 
   helper.on('change', searchParameters => {
     state = {
       ...state,
-      searchParameters,
+      searchParameters
     };
     dispatch();
   });
@@ -21,7 +19,7 @@ export default function createStore(helper) {
   helper.on('search', () => {
     state = {
       ...state,
-      searching: true,
+      searching: true
     };
     dispatch();
   });
@@ -30,7 +28,7 @@ export default function createStore(helper) {
     state = {
       ...state,
       searching: false,
-      searchResults,
+      searchResults
     };
     dispatch();
   });
@@ -39,21 +37,19 @@ export default function createStore(helper) {
     state = {
       ...state,
       searching: false,
-      searchError,
+      searchError
     };
     dispatch();
   });
 
   return {
     getHelper: () => helper,
-    getState: () => {
-      return state;
-    },
+    getState: () => state,
     subscribe: listener => {
       listeners.push(listener);
       return function unsubscribe() {
         listeners.splice(listeners.indexOf(listener));
       };
-    },
+    }
   };
 }

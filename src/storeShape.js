@@ -1,7 +1,7 @@
-import { PropTypes as T } from 'react';
+import {PropTypes} from 'react';
 
-export default T.shape({
-  getHelper: T.func.isRequired,
-  getState: T.func.isRequired,
-  subscribe: T.func.isRequired,
+export default PropTypes.shape({
+  getHelper: PropTypes.func.isRequired,
+  getState: PropTypes.func.isRequired,
+  subscribe: PropTypes.func.isRequired
 });
