@@ -22,13 +22,13 @@ access to the [algoliasearch-helper](https://community.algolia.com/algoliasearch
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# Install
+## Install
 
 ```sh
 npm install react-algoliasearch-helper --save
 ```
 
-# Example
+## Example
 
 SearchBox.js
 ```js
@@ -88,18 +88,18 @@ const App = () =>
 ReactDOM.render(<App/>, document.querySelector('#root'));
 ```
 
-# API
+## API
 
-## `<Provider helper>`
+### `<Provider helper>`
 
 Makes the Algolia Search `helper` available to the `connect()` calls in the component hierarchy below. You can’t use connect() without wrapping your root component in <Provider>.
 
-### Props
+#### Props
 
 * `helper` ([algoliasearch-helper-js](https://github.com/algolia/algoliasearch-helper-js)):
 * `children` (ReactElement) The root of your component hierarchy.
 
-### Example
+#### Example
 
 ```js
 ReactDOM.render(
@@ -110,15 +110,15 @@ ReactDOM.render(
 )
 ```
 
-## `connect([mapStateToProps])(WrappedComponent)`
+### `connect([mapStateToProps])(WrappedComponent)`
 
 Connects a React component to the helper.
 
-### Arguments
+#### Arguments
 
 * `[mapStateToProps(state, ownProps): stateProps]` (function): if specified, the component will subscribe to helper events (`change`, `search`, `result`, `error`). Allowing you to compute props for your wrapper component based on the search state.
 
-### Search state shape
+#### Search state shape
 
 Every function passed to `mapStateToProps` argument of `connect` will be given an search state object with those properties:
 * `searching` (boolean): `true` when a search request is pending, false otherwise
@@ -126,13 +126,13 @@ Every function passed to `mapStateToProps` argument of `connect` will be given a
 * `searchResults` (object): helper's [SearchResults](https://community.algolia.com/algoliasearch-helper-js/docs/SearchResults.html)
 * `searchError` (Error): When the search fails
 
-### Remarks
+#### Remarks
 
 * It needs to be invoked two times. The first time with its arguments described above, and a second time, with the component: `connect([mapStateToProps])(WrappedComponent)`.
 * It does not modify the passed React component. It returns a new, connected component, that you should use instead.
 * Most probably, you will use `connect` as in `export default connect()(WrappedComponent)`.
 
-### Examples
+#### Examples
 
 Forward `helper` to the `RefinementList` component:
 ```js
@@ -149,7 +149,7 @@ export default connect(
 )(Hits) // Hits component will receive a `results` property everytime new results are available
 ```
 
-# Tests
+## Tests
 
 Tests are written with [Jest](http://facebook.github.io/jest/).
 
@@ -159,13 +159,13 @@ npm run test:watch
 npm run lint
 ```
 
-# Dev
+## Dev
 
 ```sh
 npm start
 ```
 
-# Release
+## Release
 
 ```sh
 npm run release
