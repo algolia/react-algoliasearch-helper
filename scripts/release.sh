@@ -81,4 +81,4 @@ npm publish
 rm package.json README.md LICENSE
 
 printf "\n\nRelease:
-Package was published to npm."
+Package was published to npm.\n\n"
