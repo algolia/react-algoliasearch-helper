@@ -1,6 +1,6 @@
 {
   "name": "react-algoliasearch-helper",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React `<Provider helper>` and `connect()(WrappedComponent)` for algoliasearch-helper",
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.dev.babel.js",
