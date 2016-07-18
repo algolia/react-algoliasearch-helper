@@ -1,3 +1,8 @@
+React `<Provider>` and `connect(WrappedComponent)` for [algoliasearch-helper](https://community.algolia.com/algoliasearch-helper-js/).
+
+Its goal is to make building React applications with Algolia easier by allowing easy
+access to the [algoliasearch-helper](https://community.algolia.com/algoliasearch-helper-js/).
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
@@ -12,11 +17,6 @@
 - [Release](#release)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-React `<Provider>` and `connect(WrappedComponent)` for [algoliasearch-helper](https://community.algolia.com/algoliasearch-helper-js/).
-
-Its goal is to make building React applications with Algolia easier by allowing easy
-access to the [algoliasearch-helper](https://community.algolia.com/algoliasearch-helper-js/).
 
 # Install
 
