@@ -60,7 +60,7 @@ doctoc README.md --maxlevel 2
 commitMessage="release v$newVersion
 
 See https://github.com/algolia/react-algoliasearch-helper/blob/master/CHANGELOG.md"
-git add src/version.js package.json CHANGELOG.md README.md
+git add package.json CHANGELOG.md README.md
 printf %s "$commitMessage" | git commit --file -
 git tag "v$newVersion"
 
