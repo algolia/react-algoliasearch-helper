@@ -1,24 +1,26 @@
-import React, { PropTypes, Component } from 'react';
+import React, {Component} from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 
-import storeShape from './storeShape';
+import storeShape from './storeShape.js';
 
-export default function connect(mapToProps, helperProp = 'helper') {
-  return Composed => {
-    return class Connected extends Component {
-      static contextTypes = {
-        algoliaStore: storeShape.isRequired,
-      };
+const getDisplayName = WrappedComponent =>
+  WrappedComponent.displayName || WrappedComponent.name || 'UnknownComponent';
+
+export default function connect(mapStateToProps) {
+  return WrappedComponent =>
+    class Connect extends Component {
+      static contextTypes = {algoliaStore: storeShape.isRequired};
+      static displayName = `AlgoliaSearchHelperConnect(${getDisplayName(WrappedComponent)})`;
 
       constructor(props, context) {
         super();
 
-        if (mapToProps) {
-          this.state = mapToProps(context.algoliaStore.getState(), props);
+        if (mapStateToProps) {
+          this.state = mapStateToProps(context.algoliaStore.getState(), props);
 
           this.unsubscribe = context.algoliaStore.subscribe(() => {
             this.setState(
-              mapToProps(context.algoliaStore.getState(), this.props)
+              mapStateToProps(context.algoliaStore.getState(), this.props)
             );
           });
         }
@@ -30,19 +32,24 @@ export default function connect(mapToProps, helperProp = 'helper') {
         }
       }
 
+      componentWillReceiveProps(nextProps) {
+        this.setState(
+          mapStateToProps(this.context.algoliaStore.getState(), nextProps)
+        );
+      }
+
       shouldComponentUpdate(nextProps, nextState) {
         return shallowCompare(this, nextProps, nextState);
       }
 
       render() {
         return (
-          <Composed
+          <WrappedComponent
             {...this.props}
             {...this.state}
-            {...{[helperProp]: this.context.algoliaStore.getHelper() }}
+            helper={this.context.algoliaStore.getHelper()}
           />
         );
       }
-    }
-  };
+    };
 }
