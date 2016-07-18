@@ -56,6 +56,8 @@ conventional-changelog --preset angular --infile CHANGELOG.md --same-file
 printf "\n\nRelease: generate TOCS"
 doctoc README.md --maxlevel 2
 
+npm version "$newVersion" --no-git-tag-version
+
 # git add and tag
 commitMessage="release v$newVersion
 
