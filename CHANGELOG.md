@@ -1,4 +1,9 @@
 <a name="0.0.0"></a>
+# [0.0.0](https://github.com/algolia/react-algoliasearch-helper/compare/v0.0.1...v0.0.0) (2016-07-18)
+
+
+
+<a name="0.0.0"></a>
 # 0.0.0 (2016-07-18)
 
 
