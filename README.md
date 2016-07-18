@@ -1,3 +1,7 @@
+# react-algoliasearch-helper
+
+[![Version][version-svg]][package-url] [![Build Status][travis-svg]][travis-url] [![License][license-image]][license-url] [![Downloads][downloads-image]][downloads-url]
+
 React `<Provider>` and `connect(WrappedComponent)` for [algoliasearch-helper](https://community.algolia.com/algoliasearch-helper-js/).
 
 Its goal is to make building React applications with Algolia easier by allowing easy
@@ -164,5 +168,14 @@ npm start
 # Release
 
 ```sh
-BUMP=major|minor|patch|version npm run release
+npm run release
 ```
+
+[version-svg]: https://img.shields.io/npm/v/react-algoliasearch-helper.svg?style=flat-square
+[package-url]: https://npmjs.org/package/react-algoliasearch-helper
+[travis-svg]: https://img.shields.io/travis/algolia/react-algoliasearch-helper/master.svg?style=flat-square
+[travis-url]: https://travis-ci.org/algolia/react-algoliasearch-helper
+[license-image]: http://img.shields.io/badge/license-MIT-green.svg?style=flat-square
+[license-url]: LICENSE
+[downloads-image]: https://img.shields.io/npm/dm/react-algoliasearch-helper.svg?style=flat-square
+[downloads-url]: http://npm-stat.com/charts.html?package=react-algoliasearch-helper
