@@ -140,7 +140,7 @@ export default connect()(RefinementList)
 ```
 
 Receive `results` in the `Hits` component:
-```
+```js
 export default connect(
   state =>
     ({
