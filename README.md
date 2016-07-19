@@ -14,8 +14,6 @@ access to the [algoliasearch-helper](https://community.algolia.com/algoliasearch
 - [Install](#install)
 - [Example](#example)
 - [API](#api)
-  - [`<Provider helper>`](#provider-helper)
-  - [`connect([mapStateToProps])(WrappedComponent)`](#connectmapstatetopropswrappedcomponent)
 - [Tests](#tests)
 - [Dev](#dev)
 - [Release](#release)
