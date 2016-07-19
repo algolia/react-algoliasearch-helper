@@ -24,6 +24,7 @@ describe('createStore', () => {
       searching: false,
       searchParameters,
       searchResults: null,
+      searchResultsSearchParameters: null,
       searchError: null
     });
 
@@ -41,6 +42,7 @@ describe('createStore', () => {
       searching: false,
       searchParameters: searchParametersUpdate,
       searchResults: null,
+      searchResultsSearchParameters: null,
       searchError: null
     });
 
@@ -57,6 +59,7 @@ describe('createStore', () => {
       searching: true,
       searchParameters,
       searchResults: null,
+      searchResultsSearchParameters: null,
       searchError: null
     });
   });
@@ -67,15 +70,38 @@ describe('createStore', () => {
     const helper = new EventEmitter();
     helper.getState = () => searchParameters;
     const store = createStore(helper);
-    helper.emit('result', searchResults);
+    helper.emit('result', searchResults, searchParameters);
     expect(store.getState()).toEqual({
       searching: false,
       searchParameters,
       searchResults,
+      searchResultsSearchParameters: searchParameters,
       searchError: null
     });
 
     expect(store.getState().searchResults).toBe(searchResults);
+  });
+
+  it('stores the search parameters that yielded the search results', () => {
+    const searchResultsSearchParameters = {some: 'parameter'};
+    const searchResults = {some: 'result'};
+    const helper = new EventEmitter();
+    helper.getState = () => searchResultsSearchParameters;
+    const store = createStore(helper);
+    helper.emit('result', searchResults, searchResultsSearchParameters);
+    const searchParameters = {someOther: 'parameter'};
+    helper.emit('change', {someOther: 'parameter'});
+    expect(store.getState()).toEqual({
+      searching: false,
+      searchParameters,
+      searchResults,
+      searchResultsSearchParameters,
+      searchError: null
+    });
+
+    expect(store.getState().searchResultsSearchParameters).toBe(
+      searchResultsSearchParameters
+    );
   });
 
   it('computes state on helper error', () => {
@@ -89,6 +115,7 @@ describe('createStore', () => {
       searching: false,
       searchParameters,
       searchResults: null,
+      searchResultsSearchParameters: null,
       searchError
     });
 
