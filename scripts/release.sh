@@ -46,7 +46,7 @@ printf "\n=> Release: please type the new chosen version > "
 read -e newVersion
 
 # build
-npm run build
+NODE_ENV=production npm run build
 
 # update changelog
 printf "\n\nRelease: update changelog"
