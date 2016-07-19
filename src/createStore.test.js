@@ -1,5 +1,3 @@
-/* eslint-env jest, jasmine */
-
 import createStore from './createStore.js';
 import EventEmitter from 'events';
 jest.unmock('./createStore.js');

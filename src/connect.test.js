@@ -1,5 +1,3 @@
-/* eslint-env jest, jasmine */
-
 import React, {Component} from 'react';
 import connect from './connect.js';
 import {shallow, mount} from 'enzyme';
@@ -75,7 +73,7 @@ describe('connect', () => {
     expect(unsubscribe).toBeCalled();
   });
 
-  fit('only renders when needed', () => {
+  it('only renders when needed', () => {
     const Wrapped = jest.fn(() => <div/>);
     let subscribeListener;
     const algoliaStore = {

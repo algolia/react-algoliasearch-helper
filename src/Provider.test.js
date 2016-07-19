@@ -1,4 +1,3 @@
-/* eslint-env jest, jasmine */
 import React, {Component} from 'react';
 
 jest.unmock('./Provider.js');
