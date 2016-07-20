@@ -50,7 +50,7 @@
   },
   "peerDependencies": {
     "algoliasearch": "^3.17.0",
-    "algoliasearch-helper": "^2.11.0",
+    "algoliasearch-helper": "^2.11.1",
     "react": "^15.2.1"
   },
   "jest": {
