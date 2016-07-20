@@ -21,7 +21,7 @@
   "devDependencies": {
     "algoliasearch": "^3.17.0",
     "algoliasearch-helper": "^2.11.0",
-    "babel-cli": "^6.10.1",
+    "babel-cli": "^6.11.4",
     "babel-core": "^6.10.4",
     "babel-jest": "^13.2.2",
     "babel-loader": "^6.2.4",
