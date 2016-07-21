@@ -3,6 +3,7 @@ export default function createStore(helper) {
     searching: false,
     searchParameters: helper.getState(),
     searchResults: null,
+    searchResultsSearchParameters: null,
     searchError: null
   };
   const listeners = [];
@@ -24,11 +25,12 @@ export default function createStore(helper) {
     dispatch();
   });
 
-  helper.on('result', searchResults => {
+  helper.on('result', (searchResults, searchParameters) => {
     state = {
       ...state,
       searching: false,
-      searchResults
+      searchResults,
+      searchResultsSearchParameters: searchParameters
     };
     dispatch();
   });

@@ -122,6 +122,7 @@ Every function passed to `mapStateToProps` argument of `connect` will be given a
 * `searching` (boolean): `true` when a search request is pending, false otherwise
 * `searchParameters` (object): helper's [SearchParameters](https://community.algolia.com/algoliasearch-helper-js/docs/SearchParameters.html)
 * `searchResults` (object): helper's [SearchResults](https://community.algolia.com/algoliasearch-helper-js/docs/SearchResults.html)
+* `searchResultsSearchParameters` (object): [SearchParameters](https://community.algolia.com/algoliasearch-helper-js/docs/SearchParameters.html) that yielded the current [SearchResults](https://community.algolia.com/algoliasearch-helper-js/docs/SearchResults.html)
 * `searchError` (Error): When the search fails
 
 #### Remarks
