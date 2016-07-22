@@ -19,7 +19,7 @@
   "author": "Algolia (https://www.algolia.com)",
   "license": "MIT",
   "devDependencies": {
-    "algoliasearch": "^3.17.0",
+    "algoliasearch": "^3.18.0",
     "algoliasearch-helper": "^2.11.0",
     "babel-cli": "^6.10.1",
     "babel-core": "^6.11.4",
