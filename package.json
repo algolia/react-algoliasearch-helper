@@ -20,7 +20,7 @@
   "license": "MIT",
   "devDependencies": {
     "algoliasearch": "^3.18.0",
-    "algoliasearch-helper": "^2.11.0",
+    "algoliasearch-helper": "^2.12.0",
     "babel-cli": "^6.10.1",
     "babel-core": "^6.11.4",
     "babel-jest": "^13.2.2",
