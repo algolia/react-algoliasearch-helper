@@ -48,15 +48,15 @@ read -e newVersion
 # build
 NODE_ENV=production npm run build
 
-# update changelog
-printf "\n\nRelease: update changelog"
-conventional-changelog --preset angular --infile CHANGELOG.md --same-file
-
 # regenerate readme TOC
 printf "\n\nRelease: generate TOCS"
 doctoc README.md --maxlevel 2
 
 npm version "$newVersion" --no-git-tag-version
+
+# update changelog
+printf "\n\nRelease: update changelog"
+conventional-changelog --preset angular --infile CHANGELOG.md --same-file
 
 # git add and tag
 commitMessage="release v$newVersion
