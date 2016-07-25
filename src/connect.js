@@ -33,9 +33,11 @@ export default function connect(mapStateToProps) {
       }
 
       componentWillReceiveProps(nextProps) {
-        this.setState(
-          mapStateToProps(this.context.algoliaStore.getState(), nextProps)
-        );
+        if (mapStateToProps) {
+          this.setState(
+            mapStateToProps(this.context.algoliaStore.getState(), nextProps)
+          );
+        }
       }
 
       shouldComponentUpdate(nextProps, nextState) {
