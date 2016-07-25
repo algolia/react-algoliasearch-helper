@@ -63,6 +63,38 @@ describe('connect', () => {
     expect(wrapper.find(Wrapped).props()).toEqual({helper, state: 2, prop: true});
   });
 
+  it('calls mapStateToProps again upon receiving new props', () => {
+    const mapStateToProps = (state, props) => ({value: state[props.name]});
+    const Wrapped = () => <div/>;
+    const Connected = connect(mapStateToProps)(Wrapped);
+    const helper = {};
+    const state = {foo: 1, bar: 2};
+    const algoliaStore = {
+      getHelper() { return helper; },
+      getState() { return state; },
+      subscribe() {}
+    };
+    const wrapper = mount(<Connected name="foo" />, {context: {algoliaStore}});
+    expect(wrapper.find(Wrapped).props()).toEqual({helper, name: 'foo', value: 1});
+    wrapper.setProps({name: 'bar'});
+    expect(wrapper.find(Wrapped).props()).toEqual({helper, name: 'bar', value: 2});
+  });
+
+  it('supports passing no mapStateToProps', () => {
+    const Wrapped = () => <div/>;
+    const Connected = connect()(Wrapped);
+    const helper = {};
+    const algoliaStore = {
+      getHelper() { return helper; },
+      getState() {},
+      subscribe() {}
+    };
+    const wrapper = mount(<Connected />, {context: {algoliaStore}});
+    expect(wrapper.find(Wrapped).props()).toEqual({helper});
+    wrapper.update();
+    expect(wrapper.find(Wrapped).props()).toEqual({helper});
+  });
+
   it('calls store.unsubscribe when component unmount', () => {
     const unsubscribe = jest.fn();
     const Connected = connect(() => {})(() => <div/>);
