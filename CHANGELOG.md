@@ -1,3 +1,13 @@
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/algolia/react-algoliasearch-helper/compare/v1.2.0...v1.2.1) (2016-07-25)
+
+
+### Bug Fixes
+
+* **connect:** don't call mapStateToProps in willReceiveProps when it isn't provided ([8484715](https://github.com/algolia/react-algoliasearch-helper/commit/8484715))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/algolia/react-algoliasearch-helper/compare/v1.1.0...v1.2.0) (2016-07-21)
 
