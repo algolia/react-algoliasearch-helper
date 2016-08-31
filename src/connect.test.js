@@ -161,13 +161,8 @@ describe('connect', () => {
   });
 
   it('sets a default displayName when not able to find one', () => {
-    const SuperComponent = React.createClass({
-      render() { return <div/>; },
-      displayName: undefined // latest babel
-    });
-
     const algoliaStore = {getHelper() {}, getState() {}, subscribe() {}};
-    const Connected = connect()(SuperComponent);
+    const Connected = connect()(() => <div/>);
     const wrapper = mount(<Connected />, {context: {algoliaStore}});
     expect(wrapper.name()).toEqual('AlgoliaSearchHelperConnect(UnknownComponent)');
   });
