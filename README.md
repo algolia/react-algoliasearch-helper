@@ -1,8 +1,8 @@
---- NOTE FROM MAINTAINERS ---
-(Sept 2016) We are working on react-instantsearch, it's already working. Ping me on twitter: https://twitter.com/vvoyer if you want to be an alpha tester
+**--- NOTE FROM MAINTAINERS ---**
+**(Sept 2016) We are working on react-instantsearch, it's already working. Ping me on twitter: https://twitter.com/vvoyer if you want to be an alpha tester**
 
-react-instantsearch is a react specific UI library for Algolia, much easier than react-algoliasearch-helper
---- / NOTE FROM MAINTAINERS ---
+**react-instantsearch is a react specific UI library for Algolia, much easier than react-algoliasearch-helper**
+**--- / NOTE FROM MAINTAINERS ---**
 
 # react-algoliasearch-helper
 
