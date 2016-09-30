@@ -179,4 +179,19 @@ describe('createStore', () => {
     helper.emit('change');
     expect(listener).not.toBeCalled();
   });
+
+  it('remove only one listener', () => {
+    const searchParameters = {some: 'parameter'};
+    const helper = new EventEmitter();
+    helper.getState = () => searchParameters;
+    const store = createStore(helper);
+    const listener = jest.fn();
+    const anotherListener = jest.fn();
+    const unsubscribe = store.subscribe(listener);
+    store.subscribe(anotherListener);
+    unsubscribe();
+    helper.emit('change');
+    expect(listener).not.toBeCalled();
+    expect(anotherListener).toBeCalled();
+  });
 });
