@@ -50,7 +50,7 @@ export default function createStore(helper) {
     subscribe: listener => {
       listeners.push(listener);
       return function unsubscribe() {
-        listeners.splice(listeners.indexOf(listener));
+        listeners.splice(listeners.indexOf(listener), 1);
       };
     }
   };
