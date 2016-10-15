@@ -32,7 +32,7 @@
     "conventional-changelog-cli": "^1.2.0",
     "doctoc": "^1.2.0",
     "enzyme": "^2.4.1",
-    "eslint-config-algolia": "^5.3.1",
+    "eslint-config-algolia": "^6.0.1",
     "jest-cli": "^16.0.0",
     "json": "^9.0.4",
     "pretty-bytes-cli": "^2.0.0",
