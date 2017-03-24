@@ -1,7 +1,5 @@
 **--- NOTE FROM MAINTAINERS ---**
-**(Sept 2016) We are working on react-instantsearch, see here: https://community.algolia.com/instantsearch.js/react/ for beta testing**
-
-**react-instantsearch is a react specific UI library for Algolia, much easier than react-algoliasearch-helper**
+**(Mar 2017) This project is deprecated. Used [react-instantsearch](https://community.algolia.com/instantsearch.js/react/)**
 **--- / NOTE FROM MAINTAINERS ---**
 
 # react-algoliasearch-helper
